@@ -1,6 +1,16 @@
-<form action="/submit" method="POST">
-    <div>
-        <input id="textInput" type="text" name="text" />
-        <input type="submit" value="Send" />
-    </div>
-</form>
+<div id="NewPerson">
+    <form id="AddPersonForm" method="POST" action="/">
+        <ul>
+            <li>Add new person</li>
+            <li>
+                <input type="text" value="Person's name" name="PersonName" />
+            </li>
+            <li>
+                <textarea name="PersonDescription" rows="5" cols="30">Short description</textarea>
+            </li>
+            <li>
+                <input type="submit" value="Send" />
+            </li>
+        </ul>
+    </form>
+</div>
