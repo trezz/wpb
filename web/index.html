@@ -1,16 +1,24 @@
-<div id="NewPerson">
-    <form id="AddPersonForm" method="POST" action="/">
-        <ul>
-            <li>Add new person</li>
-            <li>
-                <input type="text" value="Person's name" name="PersonName" />
-            </li>
-            <li>
-                <textarea name="PersonDescription" rows="5" cols="30">Short description</textarea>
-            </li>
-            <li>
-                <input type="submit" value="Send" />
-            </li>
-        </ul>
-    </form>
-</div>
+<html>
+
+<head>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <!-- This div holds a form to add a new person to the database. -->
+    <div>
+        <p>Add new person</p>
+        <input id="PersonName" type="text" value="Person's name" />
+        <textarea id="PersonDescription" rows="5" cols="30">Short description</textarea>
+        <button id="AddPersonButton">Add</button>
+    </div>
+</body>
+
+<footer>
+    <!-- Load internal js in the footer to let the functions declared their
+         access the DOM. -->
+    <script src="./js/person.js"></script>
+</footer>
+
+</html>
