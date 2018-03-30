@@ -1,6 +1,9 @@
 
 // Post a new Person JSON serialized object to the server
-$("button#AddPersonButton").click(function() {
+$("button#AddPersonButton").click(function(event) {
+    // Use a form but prevent default behavior which is a http POST and
+    // reloads the page... The POST is made in js below.
+    event.preventDefault()
 
     // Get data to transmit to the server
     var desc = $("textarea#PersonDescription").val()
