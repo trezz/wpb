@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/wpb.css"></head>
+
+<body>
+    <div id="personAddContainer">
+        <ul>
+            <li><h1>Localize a new person</h1></li>
+            <li>Name: <input id="personName" type="text" /></li>
+            <li>Description: <textarea id="personDesc" rows="5" cols="30"></textarea></li>
+            <li><button id="addPersonButton" />Add</li>
+            </li>
+        </ul>
+    </div>
+</body>
+
+<footer>
+    <!-- Load internal js in the footer to let the functions declared their
+         access the DOM. -->
+    <script src="./js/person.js"></script>
+</footer>
+
+</html>
