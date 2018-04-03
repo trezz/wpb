@@ -3,24 +3,43 @@
 <head>
     <!-- Load jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/wpb.css"></head>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/wpb.css" />
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+</head>
 
 <body>
     <div id="personAddContainer">
-        <ul>
-            <li><h1>Localize a new person</h1></li>
-            <li>Name: <input id="personName" type="text" /></li>
-            <li>Description: <textarea id="personDesc" rows="5" cols="30"></textarea></li>
-            <li><button id="addPersonButton" />Add</li>
-            </li>
-        </ul>
+        <h1>Add a new person</h1>
+        <table id="personAddFormTable">
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input id="personName" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Short description</td>
+                <td>
+                    <textarea id="personDesc" rows="5" cols="30"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Locations</td>
+                <td>
+                    <div class="addLoc">+</div>
+                </td>
+            </tr>
+        </table>
+        <button id="addPersonButton">Add Person</button>
     </div>
 </body>
 
 <footer>
     <!-- Load internal js in the footer to let the functions declared their
-         access the DOM. -->
-    <script src="./js/person.js"></script>
+                     access the DOM. -->
+    <script src="./js/wpb.js"></script>
 </footer>
 
 </html>
