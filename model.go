@@ -7,8 +7,8 @@ import (
 
 // LatLng Latitude/Longitude structure holding a location
 type LatLng struct {
-	Latitude  float32 `json:"latitude,omitempty"`
-	Longitude float32 `json:"longitude,omitempty"`
+	Latitude  float64 `json:"latitude,omitempty"`
+	Longitude float64 `json:"longitude,omitempty"`
 }
 
 // DatedLocation A geographic location associated to a date. Used to locate a
@@ -16,6 +16,7 @@ type LatLng struct {
 type DatedLocation struct {
 	Time     time.Time `json:"time,omitempty"`
 	Location LatLng    `json:"location,omitempty"`
+	Refs     string    `json:"refs,omitempty"`
 }
 
 // Person A person with registered locations over its life
