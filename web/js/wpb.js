@@ -30,8 +30,8 @@ $("button#addPersonButton").click(function(event) {
     var loc = {};
     loc.latitude = $(table.rows[i].cells[1]).children().val()
     loc.longitude = $(table.rows[i + 1].cells[1]).children().val()
-    loc.date = $(table.rows[i + 2].cells[1]).children().val()
     loc.refs = $(table.rows[i + 3].cells[1]).children().val()
+    loc.time = $(table.rows[i + 2].cells[1]).children().datepicker("getDate")
     person.locations.push(loc)
   }
 
@@ -41,7 +41,7 @@ $("button#addPersonButton").click(function(event) {
 })
 
 // Requests the server to save the database
-$("button#saveDB").click(function(event) { $.post("saveDB", {}) })
+$("button#saveDB").click(function(event) { $.post("savePersons", {}) })
 
 /*
  * Create a new 'location' entry in the "Add Person" table.
