@@ -1,14 +1,13 @@
-
 /*
  * Requests the server to load the "add person" page
  */
 $("button#addNewPerson")
-    .click(function(event) { window.location.href = "person-add.html"; })
+  .click(function (event) { window.location.href = "person-add.html"; })
 
 /*
  * Post a new Person JSON serialized object to the server
  */
-$("button#addPersonButton").click(function(event) {
+$("button#addPersonButton").click(function (event) {
   // Use a form but prevent default behavior which is a http POST and
   // reloads the page... The POST is made in js below.
   event.preventDefault()
@@ -25,8 +24,7 @@ $("button#addPersonButton").click(function(event) {
   var i = 3;          // first location row index
   var locNumRows = 5; // number of rows per location
 
-  for (var row; row = table.rows[i]; i += locNumRows)
-  {
+  for (var row; row = table.rows[i]; i += locNumRows) {
     var loc = {};
     loc.latitude = $(table.rows[i].cells[1]).children().val()
     loc.longitude = $(table.rows[i + 1].cells[1]).children().val()
@@ -36,17 +34,19 @@ $("button#addPersonButton").click(function(event) {
   }
 
   // Post the data using JSON using AJAX!
-  $.post("addPerson", {person : JSON.stringify(person)},
-         function(data) { console.log("post succeed"); })
+  $.post("addPerson", { person: JSON.stringify(person) },
+    function (data) { console.log("post succeed"); })
 })
 
 // Requests the server to save the database
-$("button#saveDB").click(function(event) { $.post("savePersons", {}) })
+$("button#saveDB").click(function (event) {
+  $.post("database");
+})
 
 /*
  * Create a new 'location' entry in the "Add Person" table.
  */
-$("#addLoc").click(function(event) {
+$("#addLoc").click(function (event) {
   // get the table
   var table = document.getElementById("personAddFormTable")
   // create the latitude input object
@@ -76,18 +76,18 @@ $("#addLoc").click(function(event) {
   cancelButton.id = "cancelButton"
   cancelButton.innerText = "Cancel"
   cancelButton.onclick =
-      function(event) {
-    // get the table and the clicked item
-    var table = document.getElementById("personAddFormTable")
-    var clicked = $(event.target)
-    var clickedRow = clicked.parent().parent()
-    // remove the 2 previous rows and the button row clicked
-    clickedRow.prev().prev().prev().prev().remove()
-    clickedRow.prev().prev().prev().remove()
-    clickedRow.prev().prev().remove()
-    clickedRow.prev().remove()
-    clickedRow.remove()
-  }
+    function (event) {
+      // get the table and the clicked item
+      var table = document.getElementById("personAddFormTable")
+      var clicked = $(event.target)
+      var clickedRow = clicked.parent().parent()
+      // remove the 2 previous rows and the button row clicked
+      clickedRow.prev().prev().prev().prev().remove()
+      clickedRow.prev().prev().prev().remove()
+      clickedRow.prev().prev().remove()
+      clickedRow.prev().remove()
+      clickedRow.remove()
+    }
 
   // Insert elements in the table
 
@@ -110,4 +110,26 @@ $("#addLoc").click(function(event) {
   var buttonsRow = table.insertRow(-1)
   buttonsRow.insertCell(0).append("")
   buttonsRow.insertCell(1).append(cancelButton)
+})
+
+$("#editPersonButton").click(function (event) {
+  var personName = $("#editPersonName").val()
+  var person = null
+  $.get("database", function (dbcontent) {
+    var db = JSON.parse(dbcontent)
+    for (var i = 0; i < db.length; ++i) {
+      var p = db[i]
+      if (p.name == personName) {
+        person = p
+        break
+      }
+    }
+    if (person == null) {
+      $("#console").append("<p>Error: Person '" + personName + "' is unknown</p>")
+    } else {
+      // TODO: edit the selected person
+      $("#console").append("<p>Found person '" + personName + "'</p>")
+      $("#console").append("<p>" + JSON.stringify(person) + "</p>")
+    }
+  })
 })

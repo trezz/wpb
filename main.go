@@ -36,11 +36,11 @@ func addPersonHandler(w http.ResponseWriter, r *http.Request) {
 		json.Unmarshal([]byte(receivedJSON), &person)
 		Persons = append(Persons, person)
 	default:
-		fmt.Fprintf(os.Stdout, "Sorry, only GET and POST methods are supported.")
+		fmt.Println("Sorry, only GET and POST methods are supported.")
 	}
 }
 
-func saveDBHandler(w http.ResponseWriter, r *http.Request) {
+func databaseHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "POST":
 		fmt.Print("info: saving persons...")
@@ -61,8 +61,16 @@ func saveDBHandler(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		}
+	case "GET":
+		fmt.Print("info: sending database content...")
+		if b, err := json.Marshal(Persons); err != nil {
+			panic(err)
+		} else {
+			w.Write(b)
+			fmt.Println(" ok")
+		}
 	default:
-		fmt.Fprintf(os.Stdout, "Sorry, only POST methods are supported.")
+		fmt.Println("Sorry, unsupported method.")
 	}
 }
 
@@ -83,6 +91,6 @@ func main() {
 	// Initialize the server
 	http.Handle("/", http.FileServer(http.Dir("./web")))
 	http.HandleFunc("/addPerson", addPersonHandler)
-	http.HandleFunc("/savePersons", saveDBHandler)
+	http.HandleFunc("/database", databaseHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

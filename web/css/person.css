@@ -1,0 +1,52 @@
+/*
+ * This file is the style sheet of the person HTML page.
+ */
+
+.personCard {
+    background-color: green;
+    width: 400px;
+    padding: 5px;
+}
+
+.personInfos {
+    background-color: yellow;
+    position: relative;
+}
+
+.personSave {
+    float: right;
+    z-index: 1;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.personPict {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: aqua;
+}
+
+.personName {
+    width: 270px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.personDesc {
+    width: relative;
+    max-width: 380px;
+    min-width: 270px;
+    height: 100px;
+    min-height: 35px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.locContainer {
+    background-color: firebrick;
+    padding: 10px;
+}
