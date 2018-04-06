@@ -1,3 +1,5 @@
+<meta charset="UTF-8">
+
 <!--
 This file contains the HTML template displayed to view/edit/add a person into
 the database.
@@ -5,20 +7,24 @@ It uses a dedicated CSS and Javascript file to stylize and validate the data.
 -->
 
 <link rel="stylesheet" type="text/css" href="css/person.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="css/wpb.css" />
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 <div class="personCard">
     <button class="personSave">Save</button>
     <div class="personInfos">
         <div>
-            <span class="personPict"></span>
             <input class="personName" type="text" />
         </div>
         <div>
             <textarea class="personDesc"></textarea>
         </div>
         <div class="locContainer">
-            <span>Locations</span>
             <button class="locAdd">+</button>
         </div>
-        <div class="locList"></div>
+        <div class="locList">
+        </div>
     </div>
 </div>
+<script src="js/person.js"></script>
